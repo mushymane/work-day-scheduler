@@ -29,34 +29,41 @@ for (let i = 0; i < timeBlocks.length; i++) {
 
 function init() {
     // Get stored todos from localStorage
-    var storedEvents = JSON.parse(localStorage.getItem("events"));
+    // var storedEvents = JSON.parse(localStorage.getItem("events"));
   
-    // If events were retrieved from localStorage, update the events array to it
-    if (storedEvents !== null) {
-      events = storedEvents;
-    }
+    // // If events were retrieved from localStorage, update the events array to it
+    // if (storedEvents !== null) {
+    //   events = storedEvents;
+    // }
   
-    // This is a helper function that will render events to the DOM
+    // // This is a helper function that will render events to the DOM
     renderEvents();
 }
 
-function storeEvents() {
-    localStorage.setItem("events", JSON.stringify(events));
-}
-
 function renderEvents() {
-    // TODO:
-    for (let i = 0; i < localStorage.length; i++) {
-        var id = toString(i);
-        $(id).html(localStorage.getItem(i));
-    }
-    
-}
+    // console.log(localStorage, typeof(localStorage))
+    // for (key in localStorage) {
+    //     console.log("key: ", key)
+    //     var id = "#" + key;
+    //     console.log(id, typeof(id))
+    //     var text = localStorage.getItem(key);
+    //     console.log(text, typeof(text));
+    //     $(id).html(); //localStorage.getItem(localStorage(key))
+    // }
+    console.log($("#9").val())
+    $("#9").val(localStorage.getItem("9"))
+    $("#10").val(localStorage.getItem("10"))
+    $("#11").val(localStorage.getItem("11"))
+    $("#12").val(localStorage.getItem("12"))
+    $("#1").val(localStorage.getItem("1"))
+    $("#2").val(localStorage.getItem("2"))
+    $("#3").val(localStorage.getItem("3"))
+    $("#4").val(localStorage.getItem("4"))
+    $("#5").val(localStorage.getItem("5"))
 
-//saveBtn.addEventListener("click", function(event) {
-//$( "p" ).on( "click", function() {
-//   alert( $( this ).text() );
-// });
+}
+// $("#9").val(localStorage.getItem("9"))
+// Listens for a click on the save icon, then saves the data to local storage
 $("i").on("click", function(event) {
     // event.preventDefault();
   
@@ -72,5 +79,7 @@ $("i").on("click", function(event) {
     localStorage.setItem(key, value);
   
     // Store updated todos in localStorage, re-render the list
-    // renderEvents();
+    renderEvents();
   });
+
+  init();
