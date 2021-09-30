@@ -1,12 +1,13 @@
 var now = moment();
+var events = [];
 
 var timeBlocks = document.getElementsByClassName("time-block");
 console.log(timeBlocks)
 
+// Displays current time
 setInterval(function () {
     $('#currentDay').html(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
 }, 0);
-
 
 // fix -- also check for am pm
 for (let i = 0; i < timeBlocks.length; i++) {
@@ -22,3 +23,20 @@ for (let i = 0; i < timeBlocks.length; i++) {
         $(".description").addClass("present");
     }
 }
+
+function init() {
+    // Get stored todos from localStorage
+    var storedEvents = JSON.parse(localStorage.getItem("events"));
+  
+    // If events were retrieved from localStorage, update the events array to it
+    if (storedEvents !== null) {
+      events = storedEvents;
+    }
+  
+    // This is a helper function that will render events to the DOM
+    renderEvents();
+  }
+
+  function renderEvents() {
+      // TODO:
+  }
