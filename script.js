@@ -60,25 +60,17 @@ function renderEvents() {
 $("i").on("click", function(event) {
     // event.preventDefault();
   
+    // Get the text of the textarea field
     var eventText = $(this).parent().prev().find("textarea").val();
-    // console.log($(this).parent().prev().find("textarea").val())
   
-    // // Return from function early if submitted todoText is blank
-    // if (todoText === "") {
-    //   return;
-    // }
-  
-    // Add new todoText to todos array, clear the input
+    // Get the time of the saved event (the textarea id) and assign it to the key
+    // Set the value to the event text
     var key = $(this).parent().prev().find("textarea").attr("id");
     var value = eventText;
-    var myFunEvent = {}
-    myFunEvent[key] = value;
 
-    // console.log(key, typeof(key))
-    events.push(myFunEvent);
-    console.log(events)
+    // Store time and event in localStorage
+    localStorage.setItem(key, value);
   
     // Store updated todos in localStorage, re-render the list
-    // storeEvents();
     // renderEvents();
   });
