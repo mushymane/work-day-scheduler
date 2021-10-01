@@ -1,11 +1,10 @@
-var saveBtn = document.querySelector(".saveBtn");
+// var saveBtn = document.querySelector(".saveBtn");
 
 var now = moment();
-var events = [];
-// console.log("events: ", events);
 
+// var timeBlocks = $(".time-block"); // <-- not working for whatever reason so using DOM method
 var timeBlocks = document.getElementsByClassName("time-block");
-console.log(timeBlocks)
+console.log(timeBlocks, "length: ", timeBlocks.length)
 
 // Displays current time
 setInterval(function () {
@@ -15,15 +14,25 @@ setInterval(function () {
 // fix -- also check for am pm
 for (let i = 0; i < timeBlocks.length; i++) {
     var str = timeBlocks.item(i).innerHTML;
+    console.log(str)
     var hourStr = str.replace(/\D/g, "").slice(0, -2);
+    console.log(hourStr)
     var hour = parseInt(hourStr);
+    console.log(hour)
+    if (hour >= 1 && hour <= 5) {
+        hour += 12;
+    }
     console.log(hour, now.hour())
-    if (hour < 3) {
-        $(".description").addClass("past");
-    } else if (hour > 3) {
-        $(".description").addClass("future");
+    console.log(timeBlocks.item(i).nextElementSibling)
+    if (hour < now.hour()) {
+        timeBlocks.item(i).nextElementSibling.classList.add("past");
+        // $(".description").next().addClass("past");
+    } else if (hour > now.hour()) {
+        timeBlocks.item(i).nextElementSibling.classList.add("future");
+        // $(".description").addClass("future");
     } else {
-        $(".description").addClass("present");
+        timeBlocks.item(i).nextElementSibling.classList.add("present");
+        // $(".description").addClass("present");
     }
 }
 
@@ -40,6 +49,7 @@ function init() {
     renderEvents();
 }
 
+// Renders the saved events
 function renderEvents() {
     // console.log(localStorage, typeof(localStorage))
     // for (key in localStorage) {
@@ -50,7 +60,8 @@ function renderEvents() {
     //     console.log(text, typeof(text));
     //     $(id).html(); //localStorage.getItem(localStorage(key))
     // }
-    console.log($("#9").val())
+
+    // Selects the element by the hour id and updates text from the localStorage
     $("#9").val(localStorage.getItem("9"))
     $("#10").val(localStorage.getItem("10"))
     $("#11").val(localStorage.getItem("11"))
@@ -60,9 +71,8 @@ function renderEvents() {
     $("#3").val(localStorage.getItem("3"))
     $("#4").val(localStorage.getItem("4"))
     $("#5").val(localStorage.getItem("5"))
-
 }
-// $("#9").val(localStorage.getItem("9"))
+
 // Listens for a click on the save icon, then saves the data to local storage
 $("i").on("click", function(event) {
     // event.preventDefault();
@@ -80,6 +90,6 @@ $("i").on("click", function(event) {
   
     // Store updated todos in localStorage, re-render the list
     renderEvents();
-  });
+});
 
-  init();
+init();
