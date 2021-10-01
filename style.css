@@ -1,3 +1,4 @@
+/* Element styling */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -14,7 +15,9 @@ textarea{
   width: 100%; 
   max-width: 100%;
 }
+/* End of element styling */
 
+/* Content styling */
 .jumbotron {
   text-align: center;
   background-color: #eeeeee;
@@ -26,6 +29,7 @@ textarea{
 .container {
   background-color: rgba(50, 143, 47, 0.1); 
   border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 .description {
@@ -53,7 +57,9 @@ textarea{
   color: #000000;
   border-top: 1px dashed #000000;
 }
+/* End of content styling */
 
+/* Dynamic styling - script.js will apply these styles based on current time */
 .past {
   background-color: rgba(255,0,0,0.1);
   color: white;
@@ -80,7 +86,9 @@ textarea{
 .future:hover {
   background-color: rgba(228, 34, 196, 0.2);
 }
+/* End of dynamic styling */
 
+/* Save button styling */
 .saveBtn {
   border-left: 1px solid white;
   border-top-right-radius: 15px;
@@ -93,3 +101,4 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+/* End of save button styling */

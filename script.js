@@ -1,29 +1,29 @@
-// var saveBtn = document.querySelector(".saveBtn");
+//TODO: instead of hard coding the HTML, add the divs and its classes with jquery
 
+// Get the current time
 var now = moment();
 
 // var timeBlocks = $(".time-block"); // <-- not working for whatever reason so using DOM method
 var timeBlocks = document.getElementsByClassName("time-block");
-console.log(timeBlocks, "length: ", timeBlocks.length)
 
 // Displays current time
 setInterval(function () {
     $('#currentDay').html(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
 }, 0);
 
-// fix -- also check for am pm
+// Updates the color of each row depending on current time
 for (let i = 0; i < timeBlocks.length; i++) {
-    var str = timeBlocks.item(i).innerHTML;
-    console.log(str)
-    var hourStr = str.replace(/\D/g, "").slice(0, -2);
-    console.log(hourStr)
-    var hour = parseInt(hourStr);
-    console.log(hour)
+    var str = timeBlocks.item(i).innerHTML; // Get the text of the time block
+    var hourStr = str.replace(/\D/g, "").slice(0, -2); // Remove any characters that isn't a number, then remove the last two zeroes
+    var hour = parseInt(hourStr); // Convert to an integer
+
+    // For easier comparison, adding 12 accounts for AM and PM
     if (hour >= 1 && hour <= 5) {
         hour += 12;
     }
-    console.log(hour, now.hour())
-    console.log(timeBlocks.item(i).nextElementSibling)
+    
+    // Color code the rows by adding a class. Based on past, present, and future
+    // NOTE: as mentioned above the JQuery way wasn't working for me so opted for traditional Web API
     if (hour < now.hour()) {
         timeBlocks.item(i).nextElementSibling.classList.add("past");
         // $(".description").next().addClass("past");
@@ -36,21 +36,9 @@ for (let i = 0; i < timeBlocks.length; i++) {
     }
 }
 
-function init() {
-    // Get stored todos from localStorage
-    // var storedEvents = JSON.parse(localStorage.getItem("events"));
-  
-    // // If events were retrieved from localStorage, update the events array to it
-    // if (storedEvents !== null) {
-    //   events = storedEvents;
-    // }
-  
-    // // This is a helper function that will render events to the DOM
-    renderEvents();
-}
-
 // Renders the saved events
 function renderEvents() {
+    // attempt to update events by looping through localStorage
     // console.log(localStorage, typeof(localStorage))
     // for (key in localStorage) {
     //     console.log("key: ", key)
@@ -59,7 +47,7 @@ function renderEvents() {
     //     var text = localStorage.getItem(key);
     //     console.log(text, typeof(text));
     //     $(id).html(); //localStorage.getItem(localStorage(key))
-    // }
+    // } // FAILED 😭
 
     // Selects the element by the hour id and updates text from the localStorage
     $("#9").val(localStorage.getItem("9"))
@@ -92,4 +80,5 @@ $("i").on("click", function(event) {
     renderEvents();
 });
 
-init();
+// Render saved events on page load
+renderEvents();
