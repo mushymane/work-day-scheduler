@@ -23,7 +23,7 @@ for (let i = 0; i < timeBlocks.length; i++) {
     }
     
     // Color code the rows by adding a class. Based on past, present, and future
-    // NOTE: as mentioned above the JQuery way wasn't working for me so opted for traditional Web API
+    // NOTE: as mentioned above the jQuery way wasn't working for me so opted for traditional Web API
     if (hour < now.hour()) {
         timeBlocks.item(i).nextElementSibling.classList.add("past");
         // $(".description").next().addClass("past");
