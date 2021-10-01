@@ -3,7 +3,7 @@
 ## Description
 This single page application lets the user schedule their work day and add events to each hour. The events are saved to the user's browser and will persist on their next visit or refresh. To save an event, the user must click on the save button.
 
-Most of the app uses jQuery to simplify the selecting and modifying of elements. To give the user a better sense of where they are in their workday, each time slot is color coded to: red for the past hours, blue for the present hour, and purple for future hours. The events persist by utilizing localStorage. By pressing the save button, the data inputted in the textarea is stored in localStorage.
+Most of the app uses jQuery to simplify the selecting and modifying of elements. To give the user a better sense of where they are in their workday, each time slot is color coded to: red for the past hours, blue for the present hour, and purple for future hours. The events persist by utilizing localStorage. By pressing the save button, the data inputted in the textarea is stored in localStorage. hi
 
 To view the web page visit this [link](https://mushymane.github.io/work-day-scheduler/)
 
